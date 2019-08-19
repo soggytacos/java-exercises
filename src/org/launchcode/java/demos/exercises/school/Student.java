@@ -8,29 +8,30 @@ public class Student {
     private double studentGPA;
     private static int nextStudentID = 1;
 
-//    public String toString() {
-//        return studentName + " (Credits: " + numberOfCredits + ", GPA: " + studentGPA + ")";
-//    }
+    public String toString() {
+        return studentName + " (Credits: " + numberOfCredits + ", GPA: " + studentGPA + ")";
+    }
 
-    public Student(String StudentName, int studentID, double numberOfCredits, double studentGPA) {
-        this.studentName = studentName;
+    public Student(String name, int studentID, double numberOfCredits, double studentGPA) {
+        this.studentName = name;
         this.studentID = studentID;
         this.numberOfCredits = numberOfCredits;
         this.studentGPA = studentGPA;
     }
 
-//    public Student(String studentName, int studentID) {
-//        this(studentName, studentID, 0, 0);
-//    }
-//
-//    public Student(String studentName) {
-//        this(studentName, nextStudentID);
-//        nextStudentID++;
-//    }
+    public Student(String studentName, int studentID) {
+        this(studentName, studentID, 0, 0);
+    }
+
+    public Student(String studentName) {
+        this(studentName, nextStudentID);
+        nextStudentID++;
+    }
 
     public void addGrade(int courseCredits, double grade) {
         this.numberOfCredits = this.numberOfCredits + courseCredits;
-        double qualityScore = studentGPA * numberOfCredits;
+        double qualityScore;
+        qualityScore = studentGPA * numberOfCredits;
         qualityScore = qualityScore + (courseCredits * grade);
         this.studentGPA = qualityScore / this.numberOfCredits;
 
@@ -58,7 +59,7 @@ public class Student {
         studentName = aName;
     }
 
-    private int getStudentID() {
+    public int getStudentID() {
         return studentID;
     }
 
@@ -82,17 +83,17 @@ public class Student {
         studentGPA = gpa;
     }
 
-//    public boolean equals(Object o){
-//        if (o == this) {
-//            return true;
-//        }
-//        if (o == null) {
-//            return false;
-//        }
-//        if (o.getClass() != getClass()) {
-//            return false;
-//        }
-//        Student theStudent = (Student) o;
-//        return theStudent.getStudentID() == getStudentID();
-//    }
+    public boolean equals(Object o){
+        if (o == this) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (o.getClass() != getClass()) {
+            return false;
+        }
+        Student theStudent = (Student) o;
+        return theStudent.getStudentID() == getStudentID();
+    }
 }
